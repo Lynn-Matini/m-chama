@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import styles from '../Login.module.css';
+import styles from '../page.module.css';
 import { supabase } from '@/utils/supabase';
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -18,8 +19,14 @@ export default function Login() {
     setLoading(true);
     setError(null);
 
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signUp({
         email: email + '@mchama.com',
         password,
       });
@@ -27,7 +34,7 @@ export default function Login() {
       if (error) throw error;
       router.push('/dashboard');
     } catch (error) {
-      setError('Invalid login credentials');
+      setError('Error creating account. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -38,7 +45,7 @@ export default function Login() {
       <div className={styles.window}>
         <div className={styles.windowHeader}>
           <h1>M-Chama</h1>
-          <h2>Welcome Back</h2>
+          <h2>Create Your Account</h2>
         </div>
 
         <div className={styles.content}>
@@ -65,6 +72,19 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength={6}
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                id="confirmPassword"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                minLength={6}
               />
             </div>
 
@@ -73,12 +93,12 @@ export default function Login() {
               className={styles.submitButton}
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
 
-          <div className={styles.registerLink}>
-            Don't have an account? <Link href="/register">Register here</Link>
+          <div className={styles.loginLink}>
+            Already have an account? <Link href="/login">Login here</Link>
           </div>
         </div>
       </div>

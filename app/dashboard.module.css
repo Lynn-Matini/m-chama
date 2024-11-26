@@ -1,0 +1,297 @@
+.container {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #ededed;
+  width: 100%;
+  padding: 1rem;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.window {
+  background: #171717;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.windowHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerTop h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ededed;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcomeText {
+  width: 100%;
+  color: #a3a3a3;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownButton {
+  padding: 0.5rem 1rem;
+  background: #262626;
+  border: 1px solid #333;
+  color: #ededed;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: #262626;
+  border: 1px solid #333;
+  border-radius: 6px;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #ededed;
+  cursor: pointer;
+}
+
+.logoutButton {
+  padding: 0.5rem 1rem;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+
+.statCard {
+  background: #262626;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.statCard h3 {
+  margin: 0 0 0.5rem 0;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.statValue {
+  margin: 0;
+  color: #ededed;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.actionsAndTransactions {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.quickActions {
+  background: #262626;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.actionButtons {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.actionButton {
+  padding: 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+}
+
+.transactionsSection {
+  background: #262626;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  overflow-x: auto;
+}
+
+.transactionsTable {
+  width: 100%;
+  min-width: 600px;
+}
+
+.transactionsTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactionsTable th,
+.transactionsTable td {
+  padding: 0.75rem;
+  text-align: left;
+  color: #ededed;
+}
+
+.deposit {
+  color: #48bb78;
+}
+
+.withdrawal {
+  color: #f56565;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .headerControls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdown,
+  .dropdownButton,
+  .logoutButton {
+    width: 100%;
+  }
+
+  .dropdownButton {
+    justify-content: space-between;
+  }
+
+  .dropdownContent {
+    width: 100%;
+    left: 0;
+  }
+
+  .welcomeText {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .actionsAndTransactions {
+    padding: 1rem;
+  }
+
+  .actionButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .transactionsSection {
+    margin: 0 -1rem;
+    border-radius: 0;
+  }
+
+  .transactionsTable {
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet Responsive Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actionButtons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Loading State */
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0a;
+  color: #ededed;
+}
+
+.loader {
+  border: 3px solid #333;
+  border-radius: 50%;
+  border-top: 3px solid #0070f3;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
