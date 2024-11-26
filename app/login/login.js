@@ -1,3 +1,4 @@
+//This is the login page for the M-Chama app
 'use client';
 
 import { useState } from 'react';
