@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../Login.module.css';
-import { supabase } from '@/utils/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useAuth } from '@/app/auth-provider';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -12,6 +13,14 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const supabase = createClientComponentClient();
+  const { session } = useAuth();
+
+  // Redirect if already logged in
+  if (session) {
+    router.push('/dashboard');
+    return null;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +52,7 @@ export default function Login() {
 
         <div className={styles.content}>
           {error && <div className={styles.error}>{error}</div>}
-          
+
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputGroup}>
               <label htmlFor="phone">Phone Number</label>
@@ -68,8 +77,8 @@ export default function Login() {
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={styles.submitButton}
               disabled={loading}
             >
