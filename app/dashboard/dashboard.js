@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import styles from '@/app/dashboard.module.css';
 import { supabase } from '@/utils/supabase';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -14,6 +16,7 @@ export default function Dashboard() {
     nextMeeting: 'Not scheduled',
     recentTransactions: []
   });
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkSession = async () => {
@@ -75,11 +78,19 @@ export default function Dashboard() {
                     </button>
                     {isMenuOpen && (
                       <div className={styles.dropdownContent}>
-                        <button className={`${styles.dropdownItem} ${styles.active}`}>Dashboard</button>
+                        <Link href="/dashboard">
+                          <button className={`${styles.dropdownItem} ${pathname === '/dashboard' ? styles.active : ''}`}>
+                            Dashboard
+                          </button>
+                        </Link>
+                        <Link href="/dashboard/groups">
+                          <button className={`${styles.dropdownItem} ${pathname === '/dashboard/groups' ? styles.active : ''}`}>
+                            Groups
+                          </button>
+                        </Link>
                         <button className={styles.dropdownItem}>Members</button>
                         <button className={styles.dropdownItem}>Transactions</button>
                         <button className={styles.dropdownItem}>Meetings</button>
-                        <button className={styles.dropdownItem}>Settings</button>
                       </div>
                     )}
                   </div>

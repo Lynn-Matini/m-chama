@@ -1,8 +1,14 @@
+import styles from './dashboard-layout.module.css';
+
 export const metadata = {
   title: 'Dashboard - M-Chama',
   description: 'M-Chama Dashboard',
 };
 
-export default function DashboardLayout({ children }) {
-  return children;
+export default async function DashboardLayout({ children }) {
+  return (
+    <div className={styles.dashboardLayout}>
+      {children}
+    </div>
+  );
 }

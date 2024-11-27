@@ -12,18 +12,20 @@ export default function Home() {
           </div>
           
           <div className={styles.content}>
-            <div className={styles.statsGrid}>
-              <div className={styles.statCard}>
+            <div className={styles.featureCard}>
+              <div className={styles.featureItem}>
                 <h3>Secure Savings</h3>
-                <p className={styles.statValue}>Digital Solutions</p>
+                <p>Digital Solutions</p>
               </div>
-              <div className={styles.statCard}>
+              <div className={styles.divider} />
+              <div className={styles.featureItem}>
                 <h3>Easy Management</h3>
-                <p className={styles.statValue}>Track Progress</p>
+                <p>Track Progress</p>
               </div>
-              <div className={styles.statCard}>
+              <div className={styles.divider} />
+              <div className={styles.featureItem}>
                 <h3>Group Growth</h3>
-                <p className={styles.statValue}>Better Together</p>
+                <p>Better Together</p>
               </div>
             </div>
 
@@ -31,14 +33,12 @@ export default function Home() {
               <p>Welcome to the future of Chama management. Save, track, and grow your group funds securely with modern digital solutions.</p>
             </div>
 
-            <div className={styles.actionButtons}>
-              <Link href="/login">
-                <button className={styles.actionButton}>Login</button>
+            <div className={styles.buttonGroup}>
+              <Link href="/login" className={styles.submitButton}>
+                Login
               </Link>
-              <Link href="/register">
-                <button className={`${styles.actionButton} ${styles.secondaryButton}`}>
-                  Register
-                </button>
+              <Link href="/register" className={`${styles.submitButton} ${styles.secondaryButton}`}>
+                Register
               </Link>
             </div>
           </div>
